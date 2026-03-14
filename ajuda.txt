@@ -1,0 +1,13 @@
+Sistema Web PetShop Amigo Fiel
+
+Este sistema permite visualizar os produtos e serviços
+oferecidos pelo petshop.
+
+Páginas disponíveis:
+
+index.html -> página inicial
+produtos.html -> catálogo de produtos
+servicos.html -> serviços do petshop
+contato.html -> informações de contato
+
+Navegação feita através do menu presente no topo das páginas.
