@@ -11,3 +11,184 @@ servicos.html -> serviços do petshop
 contato.html -> informações de contato
 
 Navegação feita através do menu presente no topo das páginas.
+
+================================================================
+  ARQUIVO DE AJUDA — PetShop Amigo Fiel
+  Fase 2 — Fundamentos de Sistemas Web — PUCRS
+  Autor: João Pedro | Ano: 2026
+================================================================
+
+DESCRIÇÃO DO SISTEMA
+---------------------
+Site web para o PetShop Amigo Fiel, localizado em Gravataí/RS.
+Desenvolvido como projeto acadêmico da disciplina Fundamentos de
+Sistemas Web (2º semestre de ADS — PUCRS).
+
+Permite que clientes visualizem serviços e produtos do petshop,
+realizem cadastro e agendamento de banho e/ou tosa.
+
+================================================================
+ARQUIVOS DO PROJETO
+================================================================
+
+  index.html    → Página inicial com carrossel, relógio, cards e contador
+  produtos.html → Catálogo de produtos por categoria (rações, higiene, acessórios)
+  servicos.html → Serviços detalhados com preços e métodos de agendamento
+  cadastro.html → Formulário de cadastro (cliente + pet) e agendamento
+  contato.html  → Informações de contato e formulário de mensagem rápida
+  style.css     → Estilos CSS personalizados (complementam o Bootstrap)
+  script.js     → Funções JavaScript (relógio, contador, validação, máscaras)
+  ajuda.txt     → Este arquivo de ajuda
+
+================================================================
+FUNCIONALIDADES POR PÁGINA
+================================================================
+
+[ index.html — Página Inicial ]
+  - Navbar responsiva com menu hambúrguer no celular
+  - Carrossel automático com 3 slides (intervalo 5 segundos)
+    com botões de navegação e indicadores (bolinhas)
+  - Barra de data e hora ao vivo (atualiza a cada segundo via JS)
+  - Seção de boas-vindas com imagem e botões de ação
+  - Cards de serviços (Banho, Tosa, Produtos) com hover animado
+  - Contador animado de estatísticas (dispara ao rolar até a seção)
+  - Rodapé com informações de contato
+
+[ produtos.html — Produtos ]
+  - Produtos organizados em 3 categorias:
+      * Rações (premium, úmida, sênior)
+      * Higiene e Limpeza (shampoo, escova, tapetes)
+      * Acessórios, Roupas e Brinquedos (cama, capa de chuva, mordedor)
+  - Cards Bootstrap com imagem, descrição, preço e badge de estoque
+  - Layout responsivo: 3 colunas no desktop, 1 coluna no celular
+
+[ servicos.html — Serviços ]
+  - Serviço de Banho com lista de benefícios e tabela de preços por porte
+  - Serviço de Tosa com lista de benefícios e tabela de preços por porte
+  - Seção de métodos de agendamento:
+      * Tele-busca (+ R$ 15,00) — buscamos em Gravataí/RS
+      * Entrega no local — sem custo adicional
+  - Botões de agendamento direto para o cadastro.html
+
+[ cadastro.html — Cadastro e Agendamento ]
+
+  ETAPA 1 — Dados do Cliente:
+    * Nome completo (input text, obrigatório)
+    * CPF com máscara automática "XXX.XXX.XXX-XX" (input text)
+    * Data de nascimento (input date — calendário nativo)
+    * Endereço e CEP (input text)
+    * Sexo (radio buttons: Masculino, Feminino, Outro)
+    * Telefone com máscara automática "(XX) XXXXX-XXXX" (input tel)
+    * E-mail (input email — validação de formato automática)
+    * Aceitar comunicações (checkbox)
+
+  ETAPA 2 — Dados do Pet:
+    * Nome do pet (input text, obrigatório)
+    * Espécie (select/dropdown: Cachorro, Gato, Outro)
+    * Raça (input text)
+    * Idade em anos (input number, min=0, max=30)
+    * Peso aproximado em kg (input number, step=0.5)
+    * Porte (radio buttons: Pequeno, Médio, Grande)
+    * Observações — alergias, temperamento (textarea)
+
+  ETAPA 3 — Serviço e Agendamento:
+    * Serviço: Banho / Tosa / Banho+Tosa (radio buttons em cards)
+    * Método: Tele-busca ou Entrega no local (radio buttons)
+    * Endereço de coleta — aparece automaticamente só se Tele-busca
+      for selecionado (controle via JavaScript)
+    * Data e horário (input datetime-local — calendário+relógio nativo)
+
+  Validação JavaScript (ao clicar em "Confirmar Agendamento"):
+    * Verifica todos os campos obrigatórios
+    * Valida CPF (11 dígitos)
+    * Exibe erros em caixa vermelha com lista detalhada
+    * Exibe confirmação em caixa verde com nome do cliente e pet
+
+[ contato.html — Contato ]
+  - Endereço, telefone, e-mail e horário de atendimento
+  - Link de telefone clicável (abre discador no celular)
+  - Link de e-mail clicável (abre programa de e-mail)
+  - Formulário rápido de mensagem com simulação de envio
+
+================================================================
+TECNOLOGIAS UTILIZADAS
+================================================================
+
+  HTML5           → Estrutura semântica (tags: section, header, footer, main, nav)
+  CSS3            → Variáveis, gradientes, transições, animações, media queries
+  Bootstrap 5.3   → Grid responsivo, navbar, carrossel, cards, badges, tabelas
+  Bootstrap Icons → Biblioteca de ícones vetoriais (coração, tesoura, caminhão...)
+  JavaScript ES6  → Relógio ao vivo, contadores animados, IntersectionObserver,
+                    validação de formulário, máscaras de CPF e telefone,
+                    controle dinâmico de visibilidade de campos
+
+================================================================
+ACESSIBILIDADE IMPLEMENTADA (Aula 10)
+================================================================
+
+  1. lang="pt-BR" na tag <html>
+     → Leitores de tela pronunciam corretamente em português
+
+  2. alt="" descritivo em TODAS as imagens
+     → Descreve o conteúdo da imagem para deficientes visuais
+
+  3. aria-label nos botões sem texto visível
+     → Ex: botões do carrossel têm aria-label="Slide anterior"
+
+  4. aria-current="page" no link da página ativa na navbar
+     → Informa ao leitor de tela qual página está sendo visitada
+
+  5. aria-live="polite" no relógio
+     → Leitor de tela anuncia quando o conteúdo atualiza
+
+  6. aria-live="assertive" + role="alert" na caixa de feedback
+     → Leitor de tela anuncia imediatamente erros e confirmações
+
+  7. <fieldset> e <legend> agrupando radio buttons
+     → Agrupa campos relacionados com descrição acessível
+
+  8. aria-describedby vinculando campos à suas dicas
+     → Leitor de tela lê a dica de ajuda após o campo
+
+  9. aria-hidden="true" em ícones decorativos
+     → Evita que leitores de tela leiam ícones desnecessariamente
+
+  10. role="contentinfo" no rodapé
+      → Semântica de landmark para navegação por teclado
+
+  11. :focus-visible no CSS com contorno laranja
+      → Usuários de teclado (Tab) veem claramente o foco atual
+
+  12. Contraste de cores adequado
+      → Texto escuro sobre fundos claros (e vice-versa)
+
+================================================================
+AJUSTES REALIZADOS (Fase 1 → Fase 2)
+================================================================
+
+  - Adicionado Bootstrap 5.3 via CDN em todas as páginas
+  - Separados os estilos em style.css (antes inline/ausentes)
+  - Separado o JavaScript em script.js (antes ausente)
+  - Criado navbar responsiva com menu hambúrguer
+  - Adicionado carrossel automático de 3 slides
+  - Criada barra com relógio/data ao vivo (JavaScript)
+  - Adicionado contador animado (JavaScript + IntersectionObserver)
+  - Criada página cadastro.html com formulário completo em 3 etapas
+  - Implementada validação JavaScript do formulário
+  - Implementadas máscaras de formatação automática (CPF e telefone)
+  - Implementado campo de endereço de tele-busca com visibilidade dinâmica
+  - Adicionado calendário datetime-local para agendamento
+  - Melhorados produtos.html, servicos.html e contato.html com Bootstrap
+  - Adicionados preços da Fase 1 (Banho R$40, Tosa R$50, Tele-busca +R$15)
+  - Implementados 12 requisitos de acessibilidade
+  - Corrigida estrutura HTML (lang, meta viewport, semântica)
+  - Adicionados comentários explicativos em todo o código
+
+================================================================
+LINKS DO PROJETO
+================================================================
+
+  GitHub:       https://github.com/joaoplm-dev/Petshop-Web
+  GitHub Pages: https://joaoplm-dev.github.io/Petshop-Web/
+
+================================================================
