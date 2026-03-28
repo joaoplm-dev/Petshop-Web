@@ -1,40 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-<title>Contato - PetShop Amigo Fiel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - PetShop Amigo Fiel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-principal"
+       aria-label="Menu principal de navegação">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-fill" aria-hidden="true"></i> PetShop Amigo Fiel
+      </a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#menuNavbar"
+              aria-controls="menuNavbar" aria-expanded="false"
+              aria-label="Abrir ou fechar menu de navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Agendamento</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="contato.html">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<h1>PetShop Amigo Fiel</h1>
+  <!-- CABEÇALHO -->
+  <header class="bg-dark text-white py-4 mb-4">
+    <div class="container">
+      <h1 class="mb-0">
+        <i class="bi bi-envelope" aria-hidden="true"></i> Contato
+      </h1>
+      <p class="mb-0 text-white-50">Fale conosco — estamos em Gravataí/RS!</p>
+    </div>
+  </header>
 
-<nav>
-<a href="index.html">Início</a> |
-<a href="produtos.html">Produtos</a> |
-<a href="servicos.html">Serviços</a> |
-<a href="contato.html">Contato</a>
-</nav>
+  <main class="container pb-5">
+    <div class="row g-5">
 
-<hr>
+      <!-- INFORMAÇÕES DE CONTATO (preservadas da Fase 1) -->
+      <div class="col-md-5">
+        <h2 class="titulo-secao">Nossas Informações</h2>
 
-</header>
+        <ul class="list-unstyled">
 
-<h2>Contato</h2>
+          <li class="d-flex align-items-start mb-4">
+            <i class="bi bi-geo-alt-fill text-danger fs-3 me-3 mt-1" aria-hidden="true"></i>
+            <div>
+              <strong>Endereço</strong><br>
+              <span class="text-muted">Gravataí — RS</span>
+            </div>
+          </li>
 
-<p>Telefone: (51) 99999-9999</p>
-<p>Email: contato@petshopamigofiel.com</p>
-<p>Endereço: Gravataí - RS</p>
+          <li class="d-flex align-items-start mb-4">
+            <i class="bi bi-telephone-fill text-success fs-3 me-3 mt-1" aria-hidden="true"></i>
+            <div>
+              <strong>Telefone / WhatsApp</strong><br>
+              <!--
+                href="tel:+5551999999999" → ao clicar no celular, abre o discador
+                automaticamente com o número preenchido
+              -->
+              <a href="tel:+5551999999999" class="text-muted text-decoration-none">
+                (51) 99999-9999
+              </a>
+            </div>
+          </li>
 
-<footer>
+          <li class="d-flex align-items-start mb-4">
+            <i class="bi bi-envelope-fill text-primary fs-3 me-3 mt-1" aria-hidden="true"></i>
+            <div>
+              <strong>E-mail</strong><br>
+              <!--
+                href="mailto:..." → ao clicar, abre o programa de e-mail
+                com o destinatário já preenchido
+              -->
+              <a href="mailto:contato@petshopamigofiel.com" class="text-muted text-decoration-none">
+                contato@petshopamigofiel.com
+              </a>
+            </div>
+          </li>
 
-<hr>
+          <li class="d-flex align-items-start">
+            <i class="bi bi-clock-fill text-warning fs-3 me-3 mt-1" aria-hidden="true"></i>
+            <div>
+              <strong>Horário de Atendimento</strong><br>
+              <span class="text-muted">Segunda a Sábado: 8h às 18h</span><br>
+              <span class="text-muted">Domingo: Fechado</span>
+            </div>
+          </li>
 
-<p>Autor: João Pedro</p>
-<p>PetShop Amigo Fiel</p>
+        </ul>
+      </div>
 
+      <!-- FORMULÁRIO DE CONTATO RÁPIDO -->
+      <div class="col-md-7">
+        <h2 class="titulo-secao">Envie uma Mensagem</h2>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label for="contatoNome" class="form-label fw-semibold">Nome</label>
+            <input type="text" class="form-control" id="contatoNome"
+                   placeholder="Seu nome completo">
+          </div>
+
+          <div class="col-md-6">
+            <label for="contatoEmail" class="form-label fw-semibold">E-mail</label>
+            <input type="email" class="form-control" id="contatoEmail"
+                   placeholder="voce@email.com">
+          </div>
+
+          <div class="col-12">
+            <label for="contatoAssunto" class="form-label fw-semibold">Assunto</label>
+            <input type="text" class="form-control" id="contatoAssunto"
+                   placeholder="Ex.: Dúvida sobre preços, agendamento...">
+          </div>
+
+          <div class="col-12">
+            <label for="contatoMensagem" class="form-label fw-semibold">Mensagem</label>
+            <textarea class="form-control" id="contatoMensagem" rows="5"
+                      placeholder="Escreva sua mensagem aqui..."></textarea>
+          </div>
+
+          <div class="col-12">
+            <!--
+              alert() → função JavaScript nativa do browser que exibe um pop-up de aviso.
+              Aqui simula o envio da mensagem (num projeto real, enviaria para um servidor).
+            -->
+            <button type="button" class="btn btn-laranja"
+                    onclick="alert('✅ Mensagem enviada! Em breve entraremos em contato.')">
+              <i class="bi bi-send-fill me-2" aria-hidden="true"></i>
+              Enviar Mensagem
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-dark text-white text-center py-4 mt-5" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">
+        <i class="bi bi-heart-fill text-danger" aria-hidden="true"></i>
+        <strong>PetShop Amigo Fiel</strong> — Gravataí/RS
+      </p>
+      <p class="mb-1">
+        <i class="bi bi-telephone" aria-hidden="true"></i>
+        <a href="tel:+5551999999999" class="text-white-50">(51) 99999-9999</a>
+        &nbsp;|&nbsp;
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <a href="mailto:contato@petshopamigofiel.com" class="text-white-50">
+          contato@petshopamigofiel.com
+        </a>
+      </p>
+      <p class="mb-0 text-white-50 small">
+        Autor: João Pedro &mdash; &copy; 2026 Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
 </footer>
 
 </body>
