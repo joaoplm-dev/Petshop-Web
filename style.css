@@ -1,0 +1,175 @@
+/* ============================================================
+   style.css — PetShop Amigo Fiel
+   Estilos personalizados que completam o Bootstrap.
+
+   DICA: O CSS é lido de cima para baixo.
+         Regras mais abaixo sobrescrevem as de cima.
+============================================================ */
+
+
+/* ------------------------------------------------------------
+   VARIÁVEIS CSS (custom properties)
+   Definimos as cores principais uma única vez aqui.
+   Para trocar a cor do site basta mudar esses valores!
+------------------------------------------------------------ */
+:root {
+  --cor-primaria:   #e07b2a;  /* laranja — cor principal do site */
+  --cor-nav:        #1a3a5c;  /* azul escuro da navbar */
+  --cor-texto:      #343a40;  /* cinza escuro para textos */
+}
+
+
+/* ------------------------------------------------------------
+   NAVBAR
+------------------------------------------------------------ */
+#navbar-principal {
+  background-color: var(--cor-nav);
+
+  /* box-shadow: adiciona sombra embaixo da navbar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo na navbar */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--cor-primaria) !important; /* !important força a cor mesmo com Bootstrap */
+}
+
+/* Links da navbar mudam de cor ao passar o mouse */
+.nav-link:hover {
+  color: var(--cor-primaria) !important;
+  transition: color 0.2s ease; /* transition: anima suavemente a mudança */
+}
+
+
+/* ------------------------------------------------------------
+   CARROSSEL
+------------------------------------------------------------ */
+.carousel-item img {
+  height: 480px;
+
+  /* object-fit: cover → recorta a imagem para preencher sem distorcer */
+  object-fit: cover;
+
+  /* filter: brightness → escurece a imagem para o texto ficar legível */
+  filter: brightness(0.70);
+}
+
+/* Ajuste de tamanho para celular */
+@media (max-width: 576px) {
+  /* @media → regra aplicada SOMENTE em telas com largura até 576px */
+  .carousel-item img {
+    height: 220px;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   RELÓGIO AO VIVO
+------------------------------------------------------------ */
+#relogio {
+  font-size: 0.95rem;
+  color: #5a3e00;
+}
+
+
+/* ------------------------------------------------------------
+   CARDS DE SERVIÇO / PRODUTO
+------------------------------------------------------------ */
+.sombra-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+  border-radius: 12px !important;
+
+  /* transition: suaviza animações do hover abaixo */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Ao passar o mouse, o card "sobe" levemente */
+.sombra-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+
+/* Ícones grandes dentro dos cards */
+.icone-card {
+  font-size: 2.8rem;
+}
+
+
+/* ------------------------------------------------------------
+   COR DE DESTAQUE — classe reutilizável em qualquer elemento
+------------------------------------------------------------ */
+.cor-destaque {
+  color: var(--cor-primaria);
+}
+
+
+/* ------------------------------------------------------------
+   TÍTULOS DE SEÇÃO — barra laranja à esquerda
+------------------------------------------------------------ */
+.titulo-secao {
+  border-left: 4px solid var(--cor-primaria);
+  padding-left: 12px;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ------------------------------------------------------------
+   BADGE DE ETAPA (ex: "1", "2", "3" no formulário)
+------------------------------------------------------------ */
+.badge-etapa {
+  background-color: var(--cor-primaria);
+  color: white;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+
+/* ------------------------------------------------------------
+   BOTÃO LARANJA PERSONALIZADO
+   O Bootstrap não tem laranja nativo, então criamos.
+------------------------------------------------------------ */
+.btn-laranja {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-laranja:hover {
+  background-color: #c46820;
+  border-color: #c46820;
+  color: white;
+}
+
+
+/* ------------------------------------------------------------
+   RODAPÉ
+------------------------------------------------------------ */
+footer {
+  border-top: 3px solid var(--cor-primaria);
+}
+
+
+/* ------------------------------------------------------------
+   ACESSIBILIDADE — foco visível para navegação por teclado
+   Quando o usuário navega com Tab, o elemento focado
+   ganha um contorno laranja bem visível.
+------------------------------------------------------------ */
+:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 3px;
+}
+
+
+/* ------------------------------------------------------------
+   FUNDO GRADIENTE DA PÁGINA DE CADASTRO
+------------------------------------------------------------ */
+.fundo-formulario {
+  background: linear-gradient(135deg, #f0f8ff 0%, #fff8f0 100%);
+  /* linear-gradient: cria um fundo com degradê suave entre dois tons */
+  min-height: 100vh; /* ocupa pelo menos a altura inteira da tela */
+}
