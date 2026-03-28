@@ -1,82 +1,287 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-<title>Produtos - PetShop Amigo Fiel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - PetShop Amigo Fiel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-principal"
+       aria-label="Menu principal de navegação">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-fill" aria-hidden="true"></i> PetShop Amigo Fiel
+      </a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#menuNavbar"
+              aria-controls="menuNavbar" aria-expanded="false"
+              aria-label="Abrir ou fechar menu de navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="produtos.html">Produtos</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cadastro.html">Agendamento</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<h1>PetShop Amigo Fiel</h1>
+  <!-- CABEÇALHO -->
+  <header class="bg-dark text-white py-4 mb-4">
+    <div class="container">
+      <h1 class="mb-0">
+        <i class="bi bi-bag-heart" aria-hidden="true"></i> Nossos Produtos
+      </h1>
+      <p class="mb-0 text-white-50">Acessórios, rações, higiene e brinquedos — tudo para o seu pet</p>
+    </div>
+  </header>
 
-<nav>
-<a href="index.html">Início</a> |
-<a href="produtos.html">Produtos</a> |
-<a href="servicos.html">Serviços</a> |
-<a href="contato.html">Contato</a>
-</nav>
+  <main class="container pb-5">
 
-<hr>
+    <!-- ===================================================
+         CATEGORIA: RAÇÕES
+    =================================================== -->
+    <section aria-labelledby="cat-racoes" class="mb-5">
+      <h2 id="cat-racoes" class="titulo-secao">
+        <i class="bi bi-bowl-hot-fill text-warning" aria-hidden="true"></i> Rações
+      </h2>
 
-</header>
+      <!--
+        row-cols-1        → 1 card por linha no celular
+        row-cols-md-3     → 3 cards por linha no desktop
+        g-4               → espaçamento (gap) entre os cards
+      -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
 
-<h2>Acessórios</h2>
-<p></p>
-&nbsp;
-&nbsp;
-  
-<h3>Roupa para Cachorro</h3>
-<img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQnlTBUYDQzjvP1aZ8lWXg7yGEtlA7kwZiN5seALhKEqPuXA7RSrB8QH8bFLh-thF3fXzUiDY0QIrQBY-IYTSuceGQEYj52vEZH8ojOa3AZJ5F0PRw3ikijyjBTJuXj8m9tYaHph_PStw&usqp=CAc/10">
-<p>Roupa confortável para dias frios.</p>
-<p>Valor: R$ 49,90</p>
-&nbsp;
-  
-<h3>Brinquedo Mordedor</h3>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsNDN7olthtDatp5eqIlVMXEWf_bTHkGGr8g&s">
-<p>Brinquedo resistente para diversão do pet.</p>
-<p>Valor: R$ 29,90</p>
-&nbsp;
-  
-<h2>Rações Não Perecíveis</h2>
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <!--
+              alt="" deve descrever a imagem de forma útil.
+              Um alt vazio (alt="") indica imagem decorativa — o leitor de tela pula.
+              Aqui a imagem é importante, então descrevemos.
+            -->
+            <img src="https://images.unsplash.com/photo-1589924691995-400dc9a6bc30?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Saco de ração premium para cães adultos, cor azul, embalagem de 15kg">
+            <div class="card-body">
+              <h3 class="card-title h6">Ração Premium Cães Adultos</h3>
+              <p class="card-text small text-muted">
+                Fórmula balanceada para cães adultos de médio porte. Sem corantes artificiais.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 89,90</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
 
-<h3>Ração Premium</h3>
-<img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQp9eMmp91Lko2ZycW8UqU3YPolTyj7ZSbWMbZGiYwgCdFfrYrbyCi7-FelWy97t70OY-vK6uc5Kc0Foec0VuEywugIAC-gVlA8Hobyh0LofeO0QzfoqbEhvOwLEQ9fUc5wKThxeyE&usqp=CAc/100">
-<p>Ração nutritiva para cães adultos.</p>
-<p>Valor: R$ 120,00</p>
-&nbsp;
-  
-<h3>Ração Filhote</h3>
-<img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSKF2yzEVCkV-i02ijkhiI2bKkXw9JCg8A-khkxR5Lj7x2AAfM7PKlyQp9HvLhhnOwt2N1ohkE6WYyLiS_cl2e9Y5VGUDaE0wCvuQ6sxqb7sW4xAywMoiorxPy648ReVN8KrGF4Ib74s_s&usqp=CAc/100">
-<p>Ração especial para filhotes.</p>
-<p>Valor: R$ 95,00</p>
-&nbsp;
-&nbsp;
-  
-<h2>Higiene e Limpeza</h2>
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Gato adulto laranja em foco, representando os produtos para felinos disponíveis">
+            <div class="card-body">
+              <h3 class="card-title h6">Ração Úmida para Gatos</h3>
+              <p class="card-text small text-muted">
+                Lata com frango e vegetais. Ideal para gatos adultos e filhotes.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 12,50</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
 
-<h3>Tapete Higiênico</h3>
-<img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQk2D-AYKszDVx85NhIxcyhc-zp72O2zFeOU0L2NyZaSUI8CDnLp7wEIlkw3ePgEWrZgtkFdnofsZ56s6tmhu2OuCj6I_BzzdQNueB70kHNqm4TQREBjrx7FM3AcL3JUg1vsmcKbPNTpQ&usqp=CAc/100">
-<p>Tapete absorvente para treinamento.</p>
-<p>Valor: R$ 39,90</p>
-&nbsp;
-  
-<h3>Fralda para Pet</h3>
-<img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR9HpeT0Th-DJ2lESqSJt3B7_2avycLzqJOfAM4y-lm9ZOjUC43OEZNLaVPP_hmDCCLTO8tif0G4Dj8DMuWaM_3QG0cwMVjoJZ4jdzW-_W4K2_NVPhzOzv3DSuZ8Jz_MgszOBFNgVY&usqp=CAc/100">
-<p>Fralda descartável para cães.</p>
-<p>Valor: R$ 34,90</p>
-&nbsp;
-  
-<footer>
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cachorro dourado deitado, representando os produtos de saúde e nutrição disponíveis">
+            <div class="card-body">
+              <h3 class="card-title h6">Ração Sênior para Cães</h3>
+              <p class="card-text small text-muted">
+                Fórmula especial para cães acima de 7 anos. Rica em ômega-3 e glucosamina.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 110,00</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
 
-<hr>
+      </div>
+    </section>
 
-<p>Autor: João Pedro</p>
-<p>PetShop Amigo Fiel</p>
 
-</footer>
+    <!-- ===================================================
+         CATEGORIA: HIGIENE E LIMPEZA
+    =================================================== -->
+    <section aria-labelledby="cat-higiene" class="mb-5">
+      <h2 id="cat-higiene" class="titulo-secao">
+        <i class="bi bi-droplet-half text-primary" aria-hidden="true"></i> Higiene e Limpeza
+      </h2>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cachorro pequeno tomando banho em banheira, representando os produtos de higiene disponíveis">
+            <div class="card-body">
+              <h3 class="card-title h6">Shampoo Neutro para Cães</h3>
+              <p class="card-text small text-muted">
+                pH balanceado, fórmula suave. Indicado para banhos frequentes. Frasco 500ml.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 28,90</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cachorro sendo escovado, representando os produtos de escovação e cuidado do pelo">
+            <div class="card-body">
+              <h3 class="card-title h6">Escova Removedora de Pelos</h3>
+              <p class="card-text small text-muted">
+                Ideal para raças de pelo longo. Remove pelo solto sem irritar a pele.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 45,00</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1592754862816-1a21a4ea2281?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Filhote de cachorro em tapete higiênico descartável branco">
+            <div class="card-body">
+              <h3 class="card-title h6">Tapetes Higiênicos (30 un.)</h3>
+              <p class="card-text small text-muted">
+                Absorção máxima com camada antiderrapante. Ideal para filhotes em treinamento.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 39,90</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         CATEGORIA: ACESSÓRIOS, ROUPAS E BRINQUEDOS
+    =================================================== -->
+    <section aria-labelledby="cat-acessorios">
+      <h2 id="cat-acessorios" class="titulo-secao">
+        <i class="bi bi-handbag-fill text-success" aria-hidden="true"></i>
+        Acessórios, Roupas e Brinquedos
+      </h2>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cama redonda acolchoada bege para pets, de tecido macio e lavável">
+            <div class="card-body">
+              <h3 class="card-title h6">Cama Acolchoada Redonda</h3>
+              <p class="card-text small text-muted">
+                Tecido macio e lavável. Disponível nos tamanhos P, M e G.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 79,90</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cachorro pequeno usando roupa impermeável amarela, capa de chuva para pets">
+            <div class="card-body">
+              <h3 class="card-title h6">Capa de Chuva para Pets</h3>
+              <p class="card-text small text-muted">
+                Impermeável e respirável. Tamanhos XS ao XL. Protege do frio e da chuva.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 55,00</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 sombra-card">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=200&fit=crop"
+                 class="card-img-top"
+                 alt="Cachorro brincando com brinquedo mordedor colorido de borracha resistente">
+            <div class="card-body">
+              <h3 class="card-title h6">Mordedor de Borracha</h3>
+              <p class="card-text small text-muted">
+                Material atóxico e resistente. Estimula a higiene dental e a diversão do pet.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+              <span class="fw-bold cor-destaque">R$ 22,90</span>
+              <span class="badge bg-success">Em estoque</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-dark text-white text-center py-4 mt-5" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">
+        <i class="bi bi-heart-fill text-danger" aria-hidden="true"></i>
+        <strong>PetShop Amigo Fiel</strong> — Gravataí/RS
+      </p>
+      <p class="mb-0 text-white-50 small">
+        Autor: João Pedro &mdash; &copy; 2026 Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
-
 </html>
