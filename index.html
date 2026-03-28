@@ -1,33 +1,332 @@
 <!DOCTYPE html>
-<html>
-    
+<html lang="pt-BR">
+<!--
+  lang="pt-BR" → diz ao navegador que o idioma é português do Brasil.
+  Isso é ACESSIBILIDADE: leitores de tela usam essa info para pronunciar corretamente.
+-->
+
 <head>
-<title>PetShop Amigo Fiel - Seja bem vindo! </title>
+  <meta charset="UTF-8">
+  <!-- UTF-8: garante que acentos (ã, ç, é...) apareçam corretamente -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- viewport: faz o site se adaptar a celulares e tablets (responsividade) -->
+
+  <title>PetShop Amigo Fiel - Início</title>
+
+  <!-- ↓ Bootstrap 5: framework CSS que nos dá grid, navbar, cards etc. prontos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ↓ Bootstrap Icons: biblioteca de ícones (coração, tesoura, etc.) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- ↓ Nosso CSS personalizado — vem DEPOIS do Bootstrap para sobrescrever estilos -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<header>
-    <h1>PetShop Amigo Fiel</h1>
-
-<nav>
-<a href="index.html">Início</a> |
-<a href="produtos.html">Produtos</a> |
-<a href="servicos.html">Serviços</a> |
-<a href="contato.html">Contato</a>
-</nav>
-
-<hr>
-</header>
-    
 <body>
-<h2>Bem-vindo ao PetShop Amigo Fiel</h2>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl-Dp02BOx7xtcFcEk0p17iY2BJsMgFZA46A&s/180">
+
+  <!-- ============================================================
+       NAVBAR — barra de navegação superior
+       navbar-expand-lg: no celular vira menu hambúrguer (≡)
+                         no desktop fica horizontal
+  ============================================================ -->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-principal"
+       aria-label="Menu principal de navegação">
+    <div class="container">
+
+      <!-- Logo / nome do site -->
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-fill" aria-hidden="true"></i> PetShop Amigo Fiel
+      </a>
+
+      <!-- Botão ≡ que aparece só no celular -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#menuNavbar"
+              aria-controls="menuNavbar" aria-expanded="false"
+              aria-label="Abrir ou fechar menu de navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links do menu (ms-auto os empurra para a direita) -->
+      <div class="collapse navbar-collapse" id="menuNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <!-- aria-current="page" indica ao leitor de tela qual página está ativa -->
+            <a class="nav-link active" aria-current="page" href="index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="produtos.html">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="servicos.html">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro.html">Agendamento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contato.html">Contato</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <!-- ============================================================ FIM NAVBAR -->
+
+
+  <!-- ============================================================
+       CARROSSEL DE IMAGENS — Bootstrap Carousel
+       data-bs-ride="carousel"   → inicia automático
+       data-bs-interval="5000"   → troca a cada 5000ms (5 segundos)
+  ============================================================ -->
+  <div id="carrosselPrincipal" class="carousel slide"
+       data-bs-ride="carousel" data-bs-interval="5000">
+
+    <!-- Bolinhas indicadoras embaixo do carrossel -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carrosselPrincipal" data-bs-slide-to="0"
+              class="active" aria-current="true" aria-label="Slide 1: Banho"></button>
+      <button type="button" data-bs-target="#carrosselPrincipal" data-bs-slide-to="1"
+              aria-label="Slide 2: Tosa"></button>
+      <button type="button" data-bs-target="#carrosselPrincipal" data-bs-slide-to="2"
+              aria-label="Slide 3: Produtos"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+      <!-- SLIDE 1 -->
+      <div class="carousel-item active">
+        <!--
+          alt="..." → ACESSIBILIDADE OBRIGATÓRIA!
+          Leitores de tela leem esse texto para descrever a imagem
+          a pessoas com deficiência visual.
+        -->
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=500&fit=crop"
+             class="d-block w-100"
+             alt="Cachorro dourado feliz após banho profissional, com pelo limpo e brilhoso">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- d-none d-md-block → oculta o texto no celular, mostra no desktop -->
+          <h2>Banho Profissional</h2>
+          <p>Deixe seu pet limpinho e cheiroso — a partir de R$ 40,00</p>
+          <a href="cadastro.html" class="btn btn-warning btn-lg">Agendar Agora</a>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab3?w=1200&h=500&fit=crop"
+             class="d-block w-100"
+             alt="Profissional realizando tosa em cachorro branco com tesoura especializada">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Tosa Estética</h2>
+          <p>Corte personalizado por raça — a partir de R$ 50,00</p>
+          <a href="cadastro.html" class="btn btn-warning btn-lg">Agendar Agora</a>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1200&h=500&fit=crop"
+             class="d-block w-100"
+             alt="Variedade de produtos para pets: rações, acessórios, brinquedos e itens de higiene">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Loja de Produtos</h2>
+          <p>Rações, acessórios, brinquedos e muito mais</p>
+          <a href="produtos.html" class="btn btn-warning btn-lg">Ver Produtos</a>
+        </div>
+      </div>
+
+    </div><!-- fim .carousel-inner -->
+
+    <!-- Seta "voltar" -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#carrosselPrincipal" data-bs-slide="prev"
+            aria-label="Slide anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+
+    <!-- Seta "avançar" -->
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#carrosselPrincipal" data-bs-slide="next"
+            aria-label="Próximo slide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+
+  </div>
+  <!-- ============================================================ FIM CARROSSEL -->
+
+
+  <!-- ============================================================
+       RELÓGIO AO VIVO — preenchido pelo JavaScript (script.js)
+       aria-live="polite" → avisa leitores de tela quando o texto mudar
+  ============================================================ -->
+  <div class="container-fluid bg-warning-subtle py-2 text-center">
+    <p class="mb-0 fw-semibold" id="relogio"
+       aria-live="polite" aria-label="Data e hora atual">
+      Carregando data e hora...
+    </p>
+  </div>
+  <!-- ============================================================ FIM RELÓGIO -->
+
+
+  <!-- ============================================================
+       SEÇÃO DE BOAS-VINDAS
+  ============================================================ -->
+  <section class="container my-5" aria-labelledby="titulo-boas-vindas">
+    <div class="row align-items-center">
+
+      <div class="col-md-6">
+        <h1 id="titulo-boas-vindas" class="display-5 fw-bold cor-destaque">
+          Bem-vindo ao<br>PetShop Amigo Fiel! 🐾
+        </h1>
+        <p class="lead">
+          Somos o petshop de Gravataí/RS com serviços de banho e tosa,
+          produtos de higiene, rações e muito mais para o seu melhor amigo.
+        </p>
+        <p>
+          <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+          Atendemos em Gravataí e região — com opção de tele-busca!
+        </p>
+        <a href="cadastro.html" class="btn btn-primary btn-lg me-2">
+          <i class="bi bi-calendar-check" aria-hidden="true"></i> Agendar Serviço
+        </a>
+        <a href="servicos.html" class="btn btn-outline-secondary btn-lg">
+          Ver Serviços
+        </a>
+      </div>
+
+      <div class="col-md-6 text-center mt-4 mt-md-0">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&h=400&fit=crop"
+             class="img-fluid rounded-4 sombra-card"
+             alt="Cachorro dourado sorridente, representando os pets bem cuidados no PetShop Amigo Fiel em Gravataí">
+      </div>
+
+    </div>
+  </section>
+  <!-- ============================================================ FIM BOAS-VINDAS -->
+
+
+  <!-- ============================================================
+       CARDS DE SERVIÇOS — visão rápida
+       row-cols-md-3 = 3 colunas no desktop, 1 coluna no celular
+  ============================================================ -->
+  <section class="container-fluid bg-light py-5" aria-labelledby="titulo-servicos">
+    <div class="container">
+      <h2 id="titulo-servicos" class="text-center mb-4">Nossos Serviços</h2>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- Card: Banho -->
+        <div class="col">
+          <div class="card h-100 text-center border-0 sombra-card">
+            <div class="card-body">
+              <i class="bi bi-droplet-fill icone-card text-primary" aria-hidden="true"></i>
+              <h3 class="card-title h5 mt-3">Banho</h3>
+              <p class="card-text">Higienização completa com produtos de qualidade e secagem profissional.</p>
+              <p class="fw-bold cor-destaque">A partir de R$ 40,00</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="cadastro.html" class="btn btn-primary btn-sm">Agendar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Tosa -->
+        <div class="col">
+          <div class="card h-100 text-center border-0 sombra-card">
+            <div class="card-body">
+              <i class="bi bi-scissors icone-card text-success" aria-hidden="true"></i>
+              <h3 class="card-title h5 mt-3">Tosa</h3>
+              <p class="card-text">Tosa higiênica e estética para cada raça, feita por profissionais.</p>
+              <p class="fw-bold cor-destaque">A partir de R$ 50,00</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="cadastro.html" class="btn btn-success btn-sm">Agendar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Produtos -->
+        <div class="col">
+          <div class="card h-100 text-center border-0 sombra-card">
+            <div class="card-body">
+              <i class="bi bi-bag-heart-fill icone-card text-warning" aria-hidden="true"></i>
+              <h3 class="card-title h5 mt-3">Loja de Produtos</h3>
+              <p class="card-text">Rações, acessórios, brinquedos e produtos de higiene para o seu pet.</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="produtos.html" class="btn btn-warning btn-sm">Ver Produtos</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fim .row -->
+    </div>
+  </section>
+  <!-- ============================================================ FIM CARDS -->
+
+
+  <!-- ============================================================
+       CONTADOR ANIMADO — os números sobem de 0 até o valor final
+       data-meta="500" = valor final que o JavaScript vai usar
+       O JavaScript lê esse atributo para saber até onde contar
+  ============================================================ -->
+  <section class="container py-5 text-center" aria-labelledby="titulo-numeros">
+    <h2 id="titulo-numeros" class="mb-4">Nossos Números</h2>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <p class="display-4 fw-bold cor-destaque contador"
+           data-meta="500"
+           aria-label="Mais de 500 clientes atendidos">0</p>
+        <p>Clientes Atendidos</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <p class="display-4 fw-bold cor-destaque contador"
+           data-meta="1200"
+           aria-label="Mais de 1200 banhos realizados">0</p>
+        <p>Banhos Realizados</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <p class="display-4 fw-bold cor-destaque contador"
+           data-meta="850"
+           aria-label="Mais de 850 tosas realizadas">0</p>
+        <p>Tosas Realizadas</p>
+      </div>
+    </div>
+  </section>
+  <!-- ============================================================ FIM CONTADOR -->
+
+
+  <!-- ============================================================
+       RODAPÉ
+       role="contentinfo" → semântica para leitores de tela
+  ============================================================ -->
+  <footer class="bg-dark text-white text-center py-4" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">
+        <i class="bi bi-heart-fill text-danger" aria-hidden="true"></i>
+        <strong>PetShop Amigo Fiel</strong> — Gravataí/RS
+      </p>
+      <p class="mb-1">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <a href="mailto:contato@petshopamigofiel.com" class="text-white-50">
+          contato@petshopamigofiel.com
+        </a>
+      </p>
+      <p class="mb-0 text-white-50 small">
+        Autor: João Pedro &mdash; &copy; 2026 Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+  <!-- ============================================================ FIM RODAPÉ -->
+
+
+  <!-- Bootstrap JS — necessário para o carrossel e menu hambúrguer funcionarem -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Nosso JavaScript personalizado -->
+  <script src="script.js"></script>
+
 </body>
-
-<footer>
-<hr>
-<p>Autor: João Pedro</p>
-<p>Contato: contato@petshopamigofiel.com</p>
-<p>2026 - Todos os direitos reservados</p>
-</footer>
-
 </html>
