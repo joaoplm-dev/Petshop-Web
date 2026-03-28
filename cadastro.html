@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - PetShop Amigo Fiel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fundo-formulario">
+
+  <!-- NAVBAR (igual em todas as páginas) -->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navbar-principal"
+       aria-label="Menu principal de navegação">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-heart-fill" aria-hidden="true"></i> PetShop Amigo Fiel
+      </a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#menuNavbar"
+              aria-controls="menuNavbar" aria-expanded="false"
+              aria-label="Abrir ou fechar menu de navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cadastro.html">Agendamento</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CABEÇALHO DA PÁGINA -->
+  <header class="bg-dark text-white py-4 mb-4">
+    <div class="container">
+      <h1 class="mb-0">
+        <i class="bi bi-calendar-check" aria-hidden="true"></i>
+        Cadastro e Agendamento
+      </h1>
+      <p class="mb-0 text-white-50">
+        Preencha os dados abaixo para agendar o serviço do seu pet
+      </p>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+
+    <!--
+      CAIXA DE FEEDBACK (mensagens de erro ou sucesso)
+      Começa oculta (display:none) e é exibida pelo JavaScript.
+      role="alert" + aria-live="assertive" → leitores de tela anunciam
+      imediatamente quando esse conteúdo aparecer (acessibilidade).
+    -->
+    <div id="feedbackFormulario"
+         role="alert"
+         aria-live="assertive"
+         style="display: none;">
+    </div>
+
+
+    <!-- ==================================================
+         ETAPA 1 — DADOS DO CLIENTE
+    ================================================== -->
+    <section class="card border-0 sombra-card mb-4 p-4"
+             aria-labelledby="titulo-cliente">
+
+      <h2 id="titulo-cliente" class="titulo-secao">
+        <span class="badge-etapa me-2">1</span>
+        Dados do Cliente
+      </h2>
+
+      <div class="row g-3">
+
+        <!-- Nome -->
+        <div class="col-md-6">
+          <label for="nomeCliente" class="form-label fw-semibold">
+            Nome completo
+            <!-- O asterisco vermelho indica campo obrigatório -->
+            <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <!--
+            type="text"  → campo de texto livre
+            placeholder  → texto de dica que some quando o usuário digita
+            required     → campo obrigatório (o browser bloqueia envio se vazio)
+            aria-describedby → vincula o campo à dica de ajuda abaixo (acessibilidade)
+          -->
+          <input type="text" class="form-control" id="nomeCliente"
+                 placeholder="Ex.: Maria da Silva" required
+                 aria-describedby="ajudaNome">
+          <div id="ajudaNome" class="form-text">Informe seu nome completo.</div>
+        </div>
+
+        <!-- CPF -->
+        <div class="col-md-3">
+          <label for="cpfCliente" class="form-label fw-semibold">
+            CPF <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <!--
+            oninput="formatarCPF(this)" → chama a função do script.js
+            enquanto o usuário digita, formatando automáticamente
+          -->
+          <input type="text" class="form-control" id="cpfCliente"
+                 placeholder="000.000.000-00" maxlength="14" required
+                 oninput="formatarCPF(this)"
+                 aria-describedby="ajudaCPF">
+          <div id="ajudaCPF" class="form-text">Formatação automática.</div>
+        </div>
+
+        <!-- Data de Nascimento -->
+        <div class="col-md-3">
+          <label for="nascimentoCliente" class="form-label fw-semibold">
+            Data de Nascimento
+          </label>
+          <!-- type="date" → exibe um calendário para selecionar a data -->
+          <input type="date" class="form-control" id="nascimentoCliente">
+        </div>
+
+        <!-- Endereço -->
+        <div class="col-md-8">
+          <label for="enderecoCliente" class="form-label fw-semibold">
+            Endereço <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <input type="text" class="form-control" id="enderecoCliente"
+                 placeholder="Rua, número, bairro — Gravataí/RS" required>
+        </div>
+
+        <!-- CEP -->
+        <div class="col-md-4">
+          <label for="cepCliente" class="form-label fw-semibold">CEP</label>
+          <input type="text" class="form-control" id="cepCliente"
+                 placeholder="00000-000" maxlength="9">
+        </div>
+
+        <!-- Sexo — radio buttons agrupados com fieldset/legend (acessibilidade) -->
+        <div class="col-md-4">
+          <!--
+            <fieldset> agrupa campos relacionados logicamente.
+            <legend> descreve o grupo para leitores de tela.
+            É a forma correta de agrupar radio buttons!
+          -->
+          <fieldset>
+            <legend class="form-label fw-semibold">
+              Sexo <span class="text-danger" aria-label="campo obrigatório">*</span>
+            </legend>
+            <div class="form-check form-check-inline">
+              <!--
+                type="radio" → só uma opção pode ser selecionada por vez.
+                Todos do mesmo grupo têm o mesmo name="sexoCliente".
+                O id deve ser único; o for do <label> deve bater com o id do input.
+              -->
+              <input class="form-check-input" type="radio"
+                     name="sexoCliente" id="sexoM" value="M" required>
+              <label class="form-check-label" for="sexoM">Masculino</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio"
+                     name="sexoCliente" id="sexoF" value="F">
+              <label class="form-check-label" for="sexoF">Feminino</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio"
+                     name="sexoCliente" id="sexoO" value="O">
+              <label class="form-check-label" for="sexoO">Outro</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Telefone -->
+        <div class="col-md-4">
+          <label for="telefoneCliente" class="form-label fw-semibold">
+            Telefone / WhatsApp
+            <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <!--
+            type="tel" → abre teclado numérico no celular
+            oninput="formatarTelefone(this)" → máscara automática via JS
+          -->
+          <input type="tel" class="form-control" id="telefoneCliente"
+                 placeholder="(51) 99999-9999" maxlength="15" required
+                 oninput="formatarTelefone(this)">
+        </div>
+
+        <!-- E-mail -->
+        <div class="col-md-4">
+          <label for="emailCliente" class="form-label fw-semibold">
+            E-mail <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <!--
+            type="email" → o browser valida automaticamente o formato nome@dominio.com
+          -->
+          <input type="email" class="form-control" id="emailCliente"
+                 placeholder="voce@email.com" required>
+        </div>
+
+        <!-- Checkbox de comunicações -->
+        <div class="col-12">
+          <div class="form-check">
+            <!--
+              type="checkbox" → pode ser marcado/desmarcado independentemente.
+              Diferente do radio: múltiplos podem ser marcados ao mesmo tempo.
+            -->
+            <input class="form-check-input" type="checkbox"
+                   id="aceitaPromos" value="sim">
+            <label class="form-check-label" for="aceitaPromos">
+              Desejo receber promoções e novidades por WhatsApp / e-mail
+            </label>
+          </div>
+        </div>
+
+      </div><!-- fim .row dados cliente -->
+    </section>
+
+
+    <!-- ==================================================
+         ETAPA 2 — DADOS DO PET
+    ================================================== -->
+    <section class="card border-0 sombra-card mb-4 p-4"
+             aria-labelledby="titulo-pet">
+
+      <h2 id="titulo-pet" class="titulo-secao">
+        <span class="badge-etapa me-2">2</span>
+        Dados do Pet
+      </h2>
+
+      <div class="row g-3">
+
+        <!-- Nome do pet -->
+        <div class="col-md-4">
+          <label for="nomePet" class="form-label fw-semibold">
+            Nome do pet
+            <span class="text-danger" aria-label="campo obrigatório">*</span>
+          </label>
+          <input type="text" class="form-control" id="nomePet"
+                 placeholder="Ex.: Totó" required>
+        </div>
+
+        <!-- Espécie — select (lista suspensa / dropdown) -->
+        <div class="col-md-4">
+          <label for="especiePet" class="form-label fw-semibold">Espécie</label>
+          <!--
+            <select> cria uma lista suspensa.
+            Cada <option> é uma opção da lista.
+            value="" indica a opção padrão (sem seleção).
+          -->
+          <select class="form-select" id="especiePet">
+            <option value="">Selecione...</option>
+            <option value="cachorro">🐶 Cachorro</option>
+            <option value="gato">🐱 Gato</option>
+            <option value="outro">🐾 Outro</option>
+          </select>
+        </div>
+
+        <!-- Raça -->
+        <div class="col-md-4">
+          <label for="racaPet" class="form-label fw-semibold">Raça</label>
+          <input type="text" class="form-control" id="racaPet"
+                 placeholder="Ex.: Shih Tzu, SRD...">
+        </div>
+
+        <!-- Idade -->
+        <div class="col-md-3">
+          <label for="idadePet" class="form-label fw-semibold">Idade (anos)</label>
+          <!--
+            type="number" → só aceita números
+            min/max → limita o intervalo permitido
+          -->
+          <input type="number" class="form-control" id="idadePet"
+                 min="0" max="30" placeholder="0">
+        </div>
+
+        <!-- Peso -->
+        <div class="col-md-3">
+          <label for="pesoPet" class="form-label fw-semibold">Peso aprox. (kg)</label>
+          <!-- step="0.5" → aceita valores com casa decimal (ex: 4.5kg) -->
+          <input type="number" class="form-control" id="pesoPet"
+                 min="0" max="120" step="0.5" placeholder="0.0">
+        </div>
+
+        <!-- Porte — radio buttons -->
+        <div class="col-md-6">
+          <fieldset>
+            <legend class="form-label fw-semibold">Porte do pet</legend>
+            <div class="d-flex gap-3 flex-wrap">
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="portePet" id="portePequeno" value="pequeno">
+                <label class="form-check-label" for="portePequeno">
+                  Pequeno <span class="text-muted">(até 10kg)</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="portePet" id="porteMedio" value="medio">
+                <label class="form-check-label" for="porteMedio">
+                  Médio <span class="text-muted">(10–25kg)</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio"
+                       name="portePet" id="porteGrande" value="grande">
+                <label class="form-check-label" for="porteGrande">
+                  Grande <span class="text-muted">(+25kg)</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Observações -->
+        <div class="col-12">
+          <label for="obsPet" class="form-label fw-semibold">
+            Observações
+            <span class="text-muted fw-normal">(alergias, temperamento, cuidados especiais...)</span>
+          </label>
+          <!--
+            <textarea> → campo de texto com múltiplas linhas
+            rows="3"   → altura inicial de 3 linhas (o usuário pode arrastar para ampliar)
+          -->
+          <textarea class="form-control" id="obsPet" rows="3"
+                    placeholder="Ex.: Tem medo de barulho alto, alérgico a determinados shampoos..."></textarea>
+        </div>
+
+      </div><!-- fim .row dados pet -->
+    </section>
+
+
+    <!-- ==================================================
+         ETAPA 3 — SERVIÇO E AGENDAMENTO
+    ================================================== -->
+    <section class="card border-0 sombra-card mb-4 p-4"
+             aria-labelledby="titulo-agendamento">
+
+      <h2 id="titulo-agendamento" class="titulo-secao">
+        <span class="badge-etapa me-2">3</span>
+        Serviço e Agendamento
+      </h2>
+
+      <div class="row g-4">
+
+        <!-- Escolha do serviço -->
+        <div class="col-md-5">
+          <fieldset>
+            <legend class="form-label fw-semibold">
+              Serviço desejado
+              <span class="text-danger" aria-label="campo obrigatório">*</span>
+            </legend>
+
+            <!-- Card clicável: Banho -->
+            <div class="form-check card p-3 mb-2 border-primary" style="cursor:pointer">
+              <input class="form-check-input" type="radio"
+                     name="servico" id="servBanho" value="banho" required>
+              <label class="form-check-label w-100" for="servBanho" style="cursor:pointer">
+                <i class="bi bi-droplet-fill text-primary" aria-hidden="true"></i>
+                <strong> Banho</strong>
+                <span class="d-block small text-muted">Higienização completa — a partir de R$ 40,00</span>
+              </label>
+            </div>
+
+            <!-- Card clicável: Tosa -->
+            <div class="form-check card p-3 mb-2 border-success" style="cursor:pointer">
+              <input class="form-check-input" type="radio"
+                     name="servico" id="servTosa" value="tosa">
+              <label class="form-check-label w-100" for="servTosa" style="cursor:pointer">
+                <i class="bi bi-scissors text-success" aria-hidden="true"></i>
+                <strong> Tosa</strong>
+                <span class="d-block small text-muted">Higiênica ou estética — a partir de R$ 50,00</span>
+              </label>
+            </div>
+
+            <!-- Card clicável: Banho + Tosa -->
+            <div class="form-check card p-3 border-warning" style="cursor:pointer">
+              <input class="form-check-input" type="radio"
+                     name="servico" id="servAmbos" value="banho-tosa">
+              <label class="form-check-label w-100" for="servAmbos" style="cursor:pointer">
+                <i class="bi bi-stars text-warning" aria-hidden="true"></i>
+                <strong> Banho + Tosa</strong>
+                <span class="d-block small text-muted">Pacote completo com desconto especial</span>
+              </label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <!-- Método + data/hora -->
+        <div class="col-md-7">
+
+          <!-- Método de agendamento -->
+          <fieldset class="mb-4">
+            <legend class="form-label fw-semibold">
+              Método de agendamento
+              <span class="text-danger" aria-label="campo obrigatório">*</span>
+            </legend>
+
+            <div class="form-check mb-3">
+              <!--
+                onchange="alterarMetodo()" → chama a função JS que mostra/oculta
+                o campo de endereço quando o usuário muda a seleção
+              -->
+              <input class="form-check-input" type="radio"
+                     name="metodo" id="metTelebusca" value="telebusca" required
+                     onchange="alterarMetodo()">
+              <label class="form-check-label" for="metTelebusca">
+                <i class="bi bi-truck" aria-hidden="true"></i>
+                <strong> Tele-busca</strong>
+                <span class="d-block small text-muted">
+                  Buscamos seu pet em Gravataí/RS e arredores
+                  <span class="fw-semibold">(+ R$ 15,00)</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio"
+                     name="metodo" id="metLocal" value="entrega-local"
+                     onchange="alterarMetodo()">
+              <label class="form-check-label" for="metLocal">
+                <i class="bi bi-building" aria-hidden="true"></i>
+                <strong> Entrega no local</strong>
+                <span class="d-block small text-muted">
+                  Você traz o pet até nós — sem custo adicional
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!--
+            Campo de endereço de coleta — aparece só se o usuário escolher Tele-busca.
+            style="display:none" → começa invisível.
+            O JavaScript (alterarMetodo) muda para display:block quando necessário.
+          -->
+          <div id="enderecoTelebusca" style="display:none;" class="mb-4">
+            <label for="enderecoColeta" class="form-label fw-semibold">
+              Endereço para coleta
+              <span class="text-danger" aria-label="campo obrigatório">*</span>
+            </label>
+            <input type="text" class="form-control" id="enderecoColeta"
+                   placeholder="Rua, número, bairro, complemento — Gravataí/RS">
+          </div>
+
+          <!-- CALENDÁRIO — seleção de data e hora -->
+          <div>
+            <label for="dataAgendamento" class="form-label fw-semibold">
+              Data e horário
+              <span class="text-danger" aria-label="campo obrigatório">*</span>
+            </label>
+            <!--
+              type="datetime-local" → exibe calendário + seletor de hora nativos do browser.
+              O usuário não precisa digitar: só clicar e selecionar.
+            -->
+            <input type="datetime-local" class="form-control" id="dataAgendamento"
+                   required aria-describedby="ajudaData">
+            <div id="ajudaData" class="form-text">
+              <i class="bi bi-clock" aria-hidden="true"></i>
+              Atendemos de segunda a sábado, das 8h às 18h.
+            </div>
+          </div>
+
+        </div><!-- fim col métodos -->
+
+      </div><!-- fim .row agendamento -->
+    </section>
+
+
+    <!-- BOTÃO DE ENVIO -->
+    <div class="text-center mt-2">
+      <p class="text-muted small mb-3">
+        <span class="text-danger">*</span> Campos obrigatórios
+      </p>
+
+      <!--
+        type="button" → NÃO recarrega a página ao clicar (comportamento padrão de <form>)
+        onclick="validarFormulario()" → chama nossa função de validação no script.js
+      -->
+      <button type="button" class="btn btn-laranja btn-lg px-5"
+              onclick="validarFormulario()"
+              aria-label="Confirmar agendamento">
+        <i class="bi bi-send-fill me-2" aria-hidden="true"></i>
+        Confirmar Agendamento
+      </button>
+
+      <a href="index.html" class="btn btn-outline-secondary btn-lg ms-3">
+        Cancelar
+      </a>
+    </div>
+
+  </main><!-- fim <main> -->
+
+
+  <!-- RODAPÉ -->
+  <footer class="bg-dark text-white text-center py-4 mt-5" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">
+        <i class="bi bi-heart-fill text-danger" aria-hidden="true"></i>
+        <strong>PetShop Amigo Fiel</strong> — Gravataí/RS
+      </p>
+      <p class="mb-1">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <a href="mailto:contato@petshopamigofiel.com" class="text-white-50">
+          contato@petshopamigofiel.com
+        </a>
+      </p>
+      <p class="mb-0 text-white-50 small">
+        Autor: João Pedro &mdash; &copy; 2026 Todos os direitos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
